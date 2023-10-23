@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
     },
 
     SECONDARY_button: {
-
+        borderWidth: 2,
+        borderColor: 'lightblue',
     },
 
     TERTIARY_button: {

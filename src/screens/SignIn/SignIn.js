@@ -1,23 +1,26 @@
 import React, {useState} from "react";
 import {View, Text, Image, StyleSheet, ScrollView} from "react-native";
-import Logo from '../../assets/images/logo.png';
-import MyInputField from '../components/Input/Input';
-import MyButton from '../components/Button/Button';
+import Logo from '../../../assets/images/logo.png';
+import MyInputField from '../../components/Input/Input';
+import MyButton from '../../components/Button/Button';
+import { useNavigation } from "@react-navigation/native";
 
 const SignIn = () => {
     const [userID, setUserID] = useState('');
     const [password, setPassword] = useState('');
+
     const handleClickSignIn = () => {
         console.warn("Sign in");
+        //validate user
+
+        navigation.navigate('Home');
     };
     const handleClickForgotPassword = () => {
         console.warn("Forgot password");
+        navigation.navigate('ForgotPassword');
     }
 
-    const handleClickSignUp = () => {
-        console.warn("Sign up");
-    }
-
+    const navigation = useNavigation();
     return(
         <ScrollView showsVerticalScrollIndicator={false}>
             <View>
@@ -30,12 +33,12 @@ const SignIn = () => {
                     <Text>Sign-In Here</Text>
 
                     <MyInputField 
-                        placeholder="User ID" 
+                        placeholder="Хэрэглэгчийн ID" 
                         value={userID} 
                         setValue={setUserID}/>
 
                     <MyInputField 
-                        placeholder="Password" 
+                        placeholder="Нууц үг" 
                         value={password} 
                         setValue={setPassword} 
                         secureTextEntry={true}/>
@@ -47,11 +50,6 @@ const SignIn = () => {
                     <MyButton 
                         onPress={handleClickForgotPassword} 
                         text="Нууц үгээ мартсан уу?"
-                        type="TERTIARY"/>
-                        
-                    <MyButton 
-                        onPress={handleClickSignUp} 
-                        text="Бүртгэл байхгүй юу?"
                         type="TERTIARY"/>
                 </View>
             </View>
