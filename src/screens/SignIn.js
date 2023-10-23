@@ -14,14 +14,6 @@ const SignIn = () => {
         console.warn("Forgot password");
     }
 
-    const handleClickSignInFacebook = () => {
-        console.warn("Sign in with Facebook");
-    }
-
-    const handleClickSignInGoogle = () => {
-        console.warn("Sign in with Google");
-    }
-
     const handleClickSignUp = () => {
         console.warn("Sign up");
     }
@@ -56,19 +48,7 @@ const SignIn = () => {
                         onPress={handleClickForgotPassword} 
                         text="Нууц үгээ мартсан уу?"
                         type="TERTIARY"/>
-
-                    <MyButton 
-                        onPress={handleClickSignInFacebook} 
-                        text="Facebook-ээр нэвтрэх"
-                        bgColor="E7EAF4"
-                        fgColor="4765A9"/>
-
-                    <MyButton 
-                        onPress={handleClickSignInGoogle} 
-                        text="Google-ээр нэвтрэх"
-                        bgColor="FAE9EA"
-                        fgColor="DD4D44"/>
-
+                        
                     <MyButton 
                         onPress={handleClickSignUp} 
                         text="Бүртгэл байхгүй юу?"

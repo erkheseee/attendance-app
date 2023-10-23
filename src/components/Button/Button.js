@@ -1,18 +1,16 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 
-const Button = ({onPress, text, type = "PRIMARY", bgColor, fgColor}) => {
+const Button = ({onPress, text, type = "PRIMARY"}) => {
 return (
     <Pressable 
         onPress={onPress} 
         style={[
             styles.button, 
             styles[`${type}_button`],
-            bgColor ? {backgroundColor: bgColor} : {},
         ]}>
         <Text style={[
             styles.text, 
             styles[`${type}_text`],
-            fgColor ? {color: fgColor} : {},
         ]}>{text}</Text>
     </Pressable>
 );
