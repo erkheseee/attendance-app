@@ -1,19 +1,21 @@
 import React, {useState} from "react";
-import {View, Text, Image, StyleSheet, ScrollView} from "react-native";
+import {View, Text, StyleSheet, ScrollView, ImageBackground} from "react-native";
 import Logo from '../../../assets/images/logo.png';
 import MyInputField from '../../components/Input/Input';
 import MyButton from '../../components/Button/Button';
 import { useNavigation } from "@react-navigation/native";
 
-const SignIn = () => {
+const SignIn = (props) => {
     const [userID, setUserID] = useState('');
     const [password, setPassword] = useState('');
 
     const handleClickSignIn = () => {
-        console.warn("Sign in");
-        //validate user
-
-        navigation.navigate('Home');
+        if(userID == props.userID && password == props.userPassword){
+            navigation.navigate('Home', {user: props});
+        }   
+        else{
+            console.warn("ID or password is incorrect!");
+        }
     };
     const handleClickForgotPassword = () => {
         console.warn("Forgot password");
@@ -22,16 +24,19 @@ const SignIn = () => {
 
     const navigation = useNavigation();
     return(
-        <ScrollView showsVerticalScrollIndicator={false}>
-            <View>
-                <View style={styles.login}>
-                    <Image 
-                        source={Logo} 
+        // <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
+            <View style={styles.container}>
+                <View style={styles.logintop}>
+                    <ImageBackground 
+                        source={Logo}
                         style={styles.logo} 
-                        resizeMode="contain"/>
+                        resizeMode="contain">
 
-                    <Text>Sign-In Here</Text>
+                    <Text style={styles.screenText}>Энд нэвтрэнэ үү!</Text>
 
+                    </ImageBackground>
+                </View>
+                <View style={styles.loginbottom}>
                     <MyInputField 
                         placeholder="Хэрэглэгчийн ID" 
                         value={userID} 
@@ -53,21 +58,52 @@ const SignIn = () => {
                         type="TERTIARY"/>
                 </View>
             </View>
-        </ScrollView>
+        // </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
-    login: {
+    container: {
         flex: 1,
-        alignItems: "center",
+        flexDirection: 'column',
+        display: 'flex',
+        alignContent: 'stretch',
+    },
+
+    logintop: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         padding: 20,
+        backgroundColor: '#822321',
+    },
+
+    loginbottom: {
+        flex: 2,
+        borderRadius: 30,
+        padding: 10,
+        display: "flex",
+        paddingTop: 50,
+        alignItems: 'center',
     },
 
     logo: {
-        width: 300,
-        height: 300,
-        alignContent: "center",
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        width: 400,
+        height: 200,
+        // borderWidth: 1,
+        // borderColor: 'white',
+    },
+
+    screenText: {
+        fontSize: 24,
+        fontWeight: "bold",
+        color: 'white',
+
     },
 })
 

@@ -26,12 +26,12 @@ const styles = StyleSheet.create({
     },
 
     PRIMARY_button: {
-        backgroundColor: "lightblue",
+        backgroundColor: "#822321",
     },
 
     SECONDARY_button: {
         borderWidth: 2,
-        borderColor: 'lightblue',
+        borderColor: '#822321',
     },
 
     TERTIARY_button: {
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     },
     
     TERTIARY_text: {
-        color: 'grey',
+        color: 'black',
     },
     
 })
