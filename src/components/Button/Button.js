@@ -1,8 +1,8 @@
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const Button = ({onPress, text, type = "PRIMARY"}) => {
 return (
-    <Pressable 
+    <TouchableOpacity 
         onPress={onPress} 
         style={[
             styles.button, 
@@ -12,16 +12,18 @@ return (
             styles.text, 
             styles[`${type}_text`],
         ]}>{text}</Text>
-    </Pressable>
+    </TouchableOpacity>
 );
 };
 
 const styles = StyleSheet.create({
     button: {
+        height: 50,
         width: "50%",
         padding: 10,
         marginVertical: 10,
         alignItems: 'center',
+        justifyContent: 'center',
         borderRadius: 30,
     },
 

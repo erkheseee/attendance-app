@@ -18,12 +18,12 @@ const Input = ({value, setValue, placeholder, secureTextEntry}) => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'lightgrey',
-        width: '100%',
+        width: '95%',
         borderColor: "#000000",
         borderWidth: 1,
         borderRadius: 5,
         height: 50,
-        paddingHorizontal: 10,
+        paddingHorizontal: 15,
         marginVertical: 10,
         justifyContent: 'center',
     },

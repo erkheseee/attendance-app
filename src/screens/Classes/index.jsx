@@ -1,8 +1,8 @@
-import { View, Image, Text, ScrollView, StyleSheet, ImageBackground } from 'react-native'
+import { View, Image, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import CustomWidget from '../../components/CustomWidget'
-import Building from '../../../assets/images/building.jpeg'
 import PP from '../../../assets/images/PP.jpg'
+import Icon from 'react-native-vector-icons/AntDesign'
 
 const Classes = ({route, navigation}) => {
   const {type} = route.params;
@@ -134,57 +134,85 @@ const Classes = ({route, navigation}) => {
     return gradeProgress;
   }
 
+  function loadMenu() {
+    null
+  }
+
   return (
-    <ImageBackground source={Building} style={{flex: 1}}>
+  //   <ImageBackground source={Building} style={{flex: 1}}>
       <ScrollView style={styles.classes}>
         {classes.map((angi) => {
           return (
-            <CustomWidget key={angi.id} text={angi.name} onPress={() => viewClass(angi)} itemStyles={styles.class} textStyles={styles.textStyles}>
-              <View style={{backgroundColor: 'white', height: 1, marginVertical: 10}}></View>
-              <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems:'center', marginHorizontal: 60}}>
-                {type == 'Grades'? <Text style={styles.text}>{getGradeProgress(angi)}/100</Text> : null}
-                <Text style={styles.text}>{angi.teacher}</Text>
-                <Image source={angi.teacherImage ? angi.teacherImage : PP} style={styles.image} resizeMode="contain"></Image>
+            <CustomWidget key={angi.id} onPress={() => viewClass(angi)} itemStyles={styles.class}>
+              <View style={styles.container}>
+                <View style={{flex: 1, marginLeft: 15,}}><Image source={angi.teacherImage ? angi.teacherImage : PP} style={styles.image} resizeMode="contain"></Image></View>
+                <View style={styles.textContainer}>
+                  <Text style={styles.textStyles}>{angi.name}</Text>
+                  <Text></Text>
+                  <Text style={styles.text}>{angi.teacher}</Text>
+                </View>
+                <View style={{flex: 1}}>{type == 'Grades'? <Text style={styles.gradeText}>{getGradeProgress(angi)}/100</Text> : <TouchableOpacity onPress={loadMenu}><Icon name="ellipsis1" style={styles.icon}></Icon></TouchableOpacity>}</View>
               </View>
             </CustomWidget>
           );
         })}
       </ScrollView>
-    </ImageBackground>
+    // </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+  },
   classes: {
     flex: 1,
     backgroundColor: 'rgba(255,255,255,0.4)',
     padding: 5,
+    backgroundColor: '#822321',
   },
   class: {
     flex: 1,
-    borderRadius: 30,
-    height: 120,
+    borderRadius: 20,
+    height: 90,
     marginHorizontal: 16,
     marginVertical: 6,
     justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: '#822321',
+    flexDirection: 'column'
+  },
+  textContainer: {
+    flex: 4,
+    marginLeft: 10,
   },
   text: {
     textAlignVertical: 'center',
     color: 'white',
-    fontWeight: 'bold'
+    fontStyle: 'italic',
+    fontSize: 15,
+  },
+  gradeText: {
+    textAlignVertical: 'center',
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 13,
   },
   textStyles: {
-    fontSize: 25,
-    textAlign: 'center',
+    fontSize: 20,
     color: 'white'
   },
   image: {
-    width: 30,
-    height: 30,
-    borderRadius: 40,
-},
+    width: 50,
+    height: 50,
+    borderRadius: 100,
+  },
+  icon: {
+    color: 'white',
+    fontSize: 30,
+    transform: 'rotate(90deg)',
+    paddingLeft: 12,
+  },
 })
 
 export default Classes

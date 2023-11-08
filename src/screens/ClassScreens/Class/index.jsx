@@ -23,8 +23,12 @@ const Class = ({route, navigation}) => {
             <Text style={styles.text}>Хичээлийн тайлбар: </Text>
             <Text style={styles.text}>{angi.summary}</Text>
           </View>
-          <CustomWidget text='Хичээлийн материалууд' textStyles={styles.textStyles} itemStyles={styles.class}/>
-          <CustomWidget text={'Дүн: '+gradeProgress+'/100'} textStyles={styles.textStyles} itemStyles={styles.class} onPress={onPress}/>
+          <TouchableOpacity style={{flex: 1.5,}}>
+            <View style={styles.class}><Text style={styles.textStyles}>Хичээлийн материалууд</Text></View>
+          </TouchableOpacity>
+          <TouchableOpacity style={{flex: 1.5,}} onPress={onPress}>
+            <View style={styles.class}><Text style={styles.textStyles}>{'Дүн: '+gradeProgress+'/100'}</Text></View>
+          </TouchableOpacity>
         </View>
       </View>
     </ImageBackground>
@@ -51,11 +55,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   class: {
-    flex: 1,
+    flex:1,
+    height: 30,
     borderRadius: 30,
     justifyContent: 'center',
     margin: 10,
     marginBottom: 15,
+    backgroundColor: '#822321',
   },
   textStyles: {
     fontSize: 20,

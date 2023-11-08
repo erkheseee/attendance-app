@@ -4,12 +4,9 @@ import {LinearGradient} from 'expo-linear-gradient'
 
 const CustomWidget = ({ textStyles, itemStyles, text, children, onPress}) => {
   return (
-    <LinearGradient colors={['#822321', '#b47b79']} locations={[0.3, 1]} start={{x: 0, y: 0}} end={{x: 1, y: 1}} style={itemStyles}>
+    <LinearGradient colors={['#b47b79', '#822321']} locations={[0.5, 0.96]} start={{x: 0, y: 0.5}} end={{x: 1, y: 0.5}} style={itemStyles}>
       <TouchableOpacity onPress={onPress}>
-          <View>
-            <Text style={textStyles}>{text}</Text>
             {children}
-          </View>
       </TouchableOpacity>
     </LinearGradient>
   )

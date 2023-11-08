@@ -28,7 +28,7 @@ const Home = (props) => {
         <View style={{flex: 1, backgroundColor: 'rgba(255,255,255,0.4)'}}>
           <UserHeader userName={user.userName} userJob='Сурагч' userMajor={user.userMajor}/>
           <View style={styles.widgets}>
-            <Widget icon='bells' text='Хичээлүүд' onPress={navigateToClasses}></Widget>
+            <Widget icon='book' text='Хичээлүүд' onPress={navigateToClasses}></Widget>
             <Widget icon='calendar' text='Хуваарь' onPress={navigateToSchedule}></Widget>
             <Widget icon='table' text='Дүнгүүд' onPress={navigateToGrades}></Widget>
             <Widget icon='form' text='Бие Даалтууд' onPress={navigateToAssignments}></Widget>
