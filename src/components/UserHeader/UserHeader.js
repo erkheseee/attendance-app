@@ -2,15 +2,15 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 import PP from '../../../assets/images/PP.jpg'
 
-const UserHeader = ({user}) => {
+const UserHeader = ({userJob, userName, userMajor, userImage}) => {
   return (
     <View style={styles.profilecontainer}>
         <View style={styles.profile}>
           <View style={styles.textContainer}>
-            <Text style={styles.greet}>Юу байна {user.userName}?</Text>
-            <Text style={styles.major}>{user.userMajor}</Text>
+            <Text style={styles.greet}>{userJob}: {userName}</Text>
+            <Text style={styles.major}>{userMajor}</Text>
           </View>
-          <Image source={user.userImage ? user.userImage : PP} style={styles.image} resizeMode="contain"></Image>
+          <Image source={userImage ? userImage : PP} style={styles.image} resizeMode="contain"></Image>
         </View>
       </View>
   )
@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
 
     major: {
         fontSize: 16,
-        color: 'black',
+        color: 'lightgrey',
+        fontStyle: 'italic',
     },
   
     profile: {
@@ -42,12 +43,14 @@ const styles = StyleSheet.create({
     },
   
     profilecontainer: {
-      flex: 2,
+      flex: 1,
       backgroundColor: '#822321',
       height: '15%',
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
+      borderBottomLeftRadius: 25,
+      borderBottomRightRadius: 25,
     },
 
     

@@ -22,11 +22,14 @@ const styles = StyleSheet.create({
         borderColor: "#000000",
         borderWidth: 1,
         borderRadius: 5,
-        height: 40,
+        height: 50,
         paddingHorizontal: 10,
         marginVertical: 10,
+        justifyContent: 'center',
     },
-    input: {},
+    input: {
+        // fontFamily: 'aril',
+    },
 })
 
 export default Input;

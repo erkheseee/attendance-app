@@ -11,8 +11,10 @@ import ResetPassword from '../screens/ResetPassword';
 import Home from '../screens/Home';
 import Classes from '../screens/Classes';
 import Schedule from '../screens/Schedule';
-import Grades from '../screens/Grades';
+import Grades from '../screens/ClassScreens/Grades';
 import Assignments from '../screens/Assignments';
+import Class from '../screens/ClassScreens/Class';
+import Attendance from '../screens/ClassScreens/Attendance';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,17 +29,20 @@ const Navigation = () => {
 
   return (
     <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='SignIn'>
-            <Stack.Screen name='SignIn'>{(props) => <SignIn {...data} />}</Stack.Screen>
-            <Stack.Screen name='ForgotPassword' component={ForgotPassword} />
+        <Stack.Navigator screenOptions={{headerBackTitleVisible:false, headerStyle: {backgroundColor: '#822321'}, headerTitleStyle: {color: 'white'}, headerTintColor: 'white'}} initialRouteName='SignIn'>
+            <Stack.Screen name='SignIn' options={{ headerShown: false}}>{(props) => <SignIn {...data} />}</Stack.Screen>
+            <Stack.Screen name='ForgotPassword' component={ForgotPassword} options={{headerTitle: null}}/>
             <Stack.Screen name='ConfirmCode' component={ConfirmCode} />
             <Stack.Screen name='ResetPassword' component={ResetPassword} />
 
-            <Stack.Screen name='Home' component={Home} />
-            <Stack.Screen name='Classes' component={Classes} />
-            <Stack.Screen name='Schedule' component={Schedule} />
-            <Stack.Screen name='Grades' component={Grades} />
-            <Stack.Screen name='Assignments' component={Assignments} />
+            <Stack.Screen name='Home' component={Home} options={{headerShown: false}}/>
+            <Stack.Screen name='Classes' component={Classes} options={({ route }) => ({ headerTitle: (route.params.type == "Grades" ? "Дүнгүүд" : "Хичээлүүд") })}/>
+            <Stack.Screen name='Schedule' component={Schedule} options={{headerTitle: "Хичээлийн хуваарь"}}/>
+            <Stack.Screen name='Grades' component={Grades} options={{headerTitle: "Хичээлийн дүн"}}/>
+            <Stack.Screen name='Assignments' component={Assignments} options={{headerTitle: " "}}/>
+
+            <Stack.Screen name='Class' component={Class} options={({ route }) => ({ headerTitle: route.params.type })}/>
+            <Stack.Screen name='Attendance' component={Attendance} options={{headerTitle: " "}}/>
         </Stack.Navigator>
     </NavigationContainer>
   );

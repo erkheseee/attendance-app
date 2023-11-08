@@ -10,12 +10,12 @@ const SignIn = (props) => {
     const [password, setPassword] = useState('');
 
     const handleClickSignIn = () => {
-        if(userID == props.userID && password == props.userPassword){
+        // if(userID == props.userID && password == props.userPassword){
             navigation.navigate('Home', {user: props});
-        }   
-        else{
-            console.warn("ID or password is incorrect!");
-        }
+        // }   
+        // else{
+        //     console.warn("ID or password is incorrect!");
+        // }
     };
     const handleClickForgotPassword = () => {
         console.warn("Forgot password");
@@ -32,7 +32,7 @@ const SignIn = (props) => {
                         style={styles.logo} 
                         resizeMode="contain">
 
-                    <Text style={styles.screenText}>Энд нэвтрэнэ үү!</Text>
+                    <Text style={styles.screenText}></Text>
 
                     </ImageBackground>
                 </View>
@@ -93,15 +93,15 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'flex-end',
         justifyContent: 'center',
-        width: 400,
-        height: 200,
+        width: 500,
+        height: 300,
+        paddingBottom: 50,
         // borderWidth: 1,
         // borderColor: 'white',
     },
 
     screenText: {
-        fontSize: 24,
-        fontWeight: "bold",
+        fontSize: 20,
         color: 'white',
 
     },

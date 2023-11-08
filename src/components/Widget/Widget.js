@@ -1,13 +1,13 @@
-import { Pressable, Text, StyleSheet } from 'react-native'
+import { TouchableOpacity, Text, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign'
 import React from 'react'
 
 const Widget = ({icon, text, onPress}) => {
   return (
-    <Pressable style={styles.container} onPress={onPress}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
         <Icon name={icon} style={styles.icon}></Icon>
         <Text style={styles.text}>{text}</Text>
-    </Pressable>
+    </TouchableOpacity>
   )
 }
 
