@@ -25,7 +25,7 @@ const Home = (props) => {
   return (
     <View style={{flex: 1}}>
       <ImageBackground source={Building} style={{flex:1}}>
-        <View style={{flex: 1, backgroundColor: 'rgba(255,255,255,0.4)'}}>
+        <View style={{flex: 1, backgroundColor: 'rgba(255,255,255,0.3)'}}>
           <UserHeader userName={user.userName} userJob='Сурагч' userMajor={user.userMajor}/>
           <View style={styles.widgets}>
             <Widget icon='book' text='Хичээлүүд' onPress={navigateToClasses}></Widget>

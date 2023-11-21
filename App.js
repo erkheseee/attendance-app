@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { StyleSheet, View } from 'react-native';
 import Navigation from './src/navigation';
+import * as SQLite from 'expo-sqlite';
 
 export default function App() {
   return (

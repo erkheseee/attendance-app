@@ -3,14 +3,10 @@ import React from 'react'
 import Building from '../../../../assets/images/building.jpeg'
 import CustomWidget from '../../../components/CustomWidget'
 import UserHeader from '../../../components/UserHeader/UserHeader'
+import { getGradeProgress } from '../../Classes/getScores'
 
 const Class = ({route, navigation}) => {
   const {angi} = route.params;
-
-  let gradeProgress = 0;
-  Object.keys(angi.gradeProgress).forEach((key)=>{
-    gradeProgress += angi.gradeProgress[key];
-  })
 
   const onPress = () => navigation.navigate('Grades', {angi: angi});
 
@@ -27,7 +23,7 @@ const Class = ({route, navigation}) => {
             <View style={styles.class}><Text style={styles.textStyles}>Хичээлийн материалууд</Text></View>
           </TouchableOpacity>
           <TouchableOpacity style={{flex: 1.5,}} onPress={onPress}>
-            <View style={styles.class}><Text style={styles.textStyles}>{'Дүн: '+gradeProgress+'/100'}</Text></View>
+            <View style={styles.class}><Text style={styles.textStyles}>{'Дүн: '+getGradeProgress(angi).gradeProgress+'/100'}</Text></View>
           </TouchableOpacity>
         </View>
       </View>

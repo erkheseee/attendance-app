@@ -1,9 +1,11 @@
 import React, {useState} from "react";
-import {View, Text, StyleSheet, ScrollView, ImageBackground} from "react-native";
+import {View, Text, StyleSheet, Image, ImageBackground} from "react-native";
 import Logo from '../../../assets/images/logo.png';
 import MyInputField from '../../components/Input/Input';
 import MyButton from '../../components/Button/Button';
 import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from "expo-linear-gradient";
+import Cap from '../../../assets/images/graduationCap.png'
 
 const SignIn = (props) => {
     const [userID, setUserID] = useState('');
@@ -26,6 +28,7 @@ const SignIn = (props) => {
     return(
         // <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
             <View style={styles.container}>
+                <LinearGradient colors={['#9B4E4D', '#822321', '#9B4E4D', '#822321', '#9B4E4D']} locations={[0, 0.2, 0.5, 0.8, 1]} start={{x: 0, y: 0.2}} end={{x: 1, y: 0.8}} style={{flex: 1}}>
                 <View style={styles.logintop}>
                     <ImageBackground 
                         source={Logo}
@@ -36,6 +39,7 @@ const SignIn = (props) => {
 
                     </ImageBackground>
                 </View>
+                </LinearGradient>
                 <View style={styles.loginbottom}>
                     <MyInputField 
                         placeholder="Хэрэглэгчийн ID" 
@@ -76,7 +80,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: 20,
-        backgroundColor: '#822321',
     },
 
     loginbottom: {
@@ -97,7 +100,7 @@ const styles = StyleSheet.create({
         height: 300,
         paddingBottom: 50,
         // borderWidth: 1,
-        // borderColor: 'white',
+        // borderColor: 'black',
     },
 
     screenText: {
