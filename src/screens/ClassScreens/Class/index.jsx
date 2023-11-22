@@ -2,13 +2,13 @@ import { View, Text, ImageBackground, StyleSheet, TouchableOpacity  } from 'reac
 import React from 'react'
 import Building from '../../../../assets/images/building.jpeg'
 import CustomWidget from '../../../components/CustomWidget'
-import UserHeader from '../../../components/UserHeader/UserHeader'
+import UserHeader from '../../../components/Header/Header'
 import { getGradeProgress } from '../../Classes/getScores'
 
 const Class = ({route, navigation}) => {
   const {angi} = route.params;
 
-  const onPress = () => navigation.navigate('Grades', {angi: angi});
+  const onPress = () => navigation.navigate('Grades', {angi: angi, className: angi.name});
 
   return (
     <ImageBackground source={Building} style={{flex: 1}}>
@@ -23,7 +23,7 @@ const Class = ({route, navigation}) => {
             <View style={styles.class}><Text style={styles.textStyles}>Хичээлийн материалууд</Text></View>
           </TouchableOpacity>
           <TouchableOpacity style={{flex: 1.5,}} onPress={onPress}>
-            <View style={styles.class}><Text style={styles.textStyles}>{'Дүн: '+getGradeProgress(angi).gradeProgress+'/100'}</Text></View>
+            <View style={styles.class}><Text style={styles.textStyles}>{`Дүн: ${getGradeProgress(angi).gradeProgress}/100`}</Text></View>
           </TouchableOpacity>
         </View>
       </View>
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'rgba(255,255,255,0.4)',
+    marginTop: 60,
   },
   textContainer: {
     flex: 6,
@@ -58,6 +59,8 @@ const styles = StyleSheet.create({
     margin: 10,
     marginBottom: 15,
     backgroundColor: '#822321',
+    borderWidth: 4,
+    borderColor: '#8E3837',
   },
   textStyles: {
     fontSize: 20,

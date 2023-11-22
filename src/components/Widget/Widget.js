@@ -13,7 +13,7 @@ const Widget = ({icon, text, onPress}) => {
 
 const styles = StyleSheet.create({
     container: {
-        margin: 15,
+        margin: 20,
         height: 150,
         width: 150,
         borderRadius: 30,
@@ -21,13 +21,25 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        // borderWidth: 3,
+        // borderColor: 'white',
     },
     text: {
+        fontWeight: '900',
         color: 'white',
+        paddingTop: 10,
+        shadowColor: 'black',
+        shadowOpacity: 1,
+        shadowRadius: 0,
+        shadowOffset: {height: 2, width: 2},
     },
     icon: {
         color: 'white',
         fontSize: 50,
+        shadowColor: 'black',
+        shadowOpacity: 1,
+        shadowRadius: 0,
+        shadowOffset: {height: 2, width: 2},
     }
 })
 

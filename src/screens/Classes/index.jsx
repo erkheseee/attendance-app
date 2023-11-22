@@ -4,9 +4,9 @@ import CustomWidget from '../../components/CustomWidget'
 import PP from '../../../assets/images/PP.jpg'
 import classesData from './classesData'
 import { getGradeProgress } from './getScores'
+import UserHeader from '../../components/Header/Header'
 
 const Classes = ({route, navigation}) => {
-  const {type} = route.params;
 
   let classes = classesData();
 
@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.4)',
     padding: 5,
     backgroundColor: '#822321',
+    marginTop: 60,
   },
   class: {
     flex: 1,

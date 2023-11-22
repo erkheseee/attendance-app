@@ -29,6 +29,8 @@ const styles = StyleSheet.create({
 
     PRIMARY_button: {
         backgroundColor: "#822321",
+        borderWidth: 4,
+        borderColor: '#8E3837',
     },
 
     SECONDARY_button: {

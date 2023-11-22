@@ -1,7 +1,8 @@
 import { View, Text , StyleSheet, ImageBackground} from 'react-native'
 import React from 'react'
 import Widget from '../../components/Widget'
-import UserHeader from '../../components/UserHeader/UserHeader'
+import Header from '../../components/Header/Header'
+import UserCard from '../../components/UserCard'
 import { useNavigation } from '@react-navigation/native'
 import Building from '../../../assets/images/building.jpeg'
 
@@ -10,13 +11,13 @@ const Home = (props) => {
   const navigation = useNavigation();
   
   const navigateToClasses = () => {
-    navigation.navigate('Classes', {type: 'Classes'});
+    navigation.navigate('Classes');
   };
   const navigateToSchedule = () => {
     navigation.navigate('Schedule');
   };
-  const navigateToGrades = () => {
-    navigation.navigate('Classes', {type: 'Grades'});
+  const navigateToAllGrades = () => {
+    navigation.navigate('AllGrades');
   };
   const navigateToAssignments = () => {
     navigation.navigate('Assignments');
@@ -25,13 +26,12 @@ const Home = (props) => {
   return (
     <View style={{flex: 1}}>
       <ImageBackground source={Building} style={{flex:1}}>
-        <View style={{flex: 1, backgroundColor: 'rgba(255,255,255,0.3)'}}>
-          <UserHeader userName={user.userName} userJob='Сурагч' userMajor={user.userMajor}/>
+        <View style={{flex: 1, backgroundColor: 'rgba(193, 192, 185, 0.75)'}}>
+          <Header title='Тавтай морил!'/>
+          <UserCard name={user.userName} id={user.userID} major={user.userMajor} picture={user.userImage}/>
           <View style={styles.widgets}>
             <Widget icon='book' text='Хичээлүүд' onPress={navigateToClasses}></Widget>
-            <Widget icon='calendar' text='Хуваарь' onPress={navigateToSchedule}></Widget>
-            <Widget icon='table' text='Дүнгүүд' onPress={navigateToGrades}></Widget>
-            <Widget icon='form' text='Бие Даалтууд' onPress={navigateToAssignments}></Widget>
+            <Widget icon='table' text='Дүнгүүд' onPress={navigateToAllGrades}></Widget>
           </View>
         </View>
       </ImageBackground>

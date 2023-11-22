@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/MNPUMP.TTF",
+      "sha1": "ea72095b1beebb891afe08e007bbe082594763de"
+    },
+    {
+      "path": "assets/fonts/Mon Aksent.ttf",
+      "sha1": "53b766a0d8ec0b80808286a2ba73b40a74375139"
+    }
+  ]
+}

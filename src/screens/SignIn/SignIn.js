@@ -13,7 +13,7 @@ const SignIn = (props) => {
 
     const handleClickSignIn = () => {
         // if(userID == props.userID && password == props.userPassword){
-            navigation.navigate('Home', {user: props});
+            navigation.navigate('Tabs', {user: props});
         // }   
         // else{
         //     console.warn("ID or password is incorrect!");
