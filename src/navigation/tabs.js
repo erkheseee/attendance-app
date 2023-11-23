@@ -34,7 +34,7 @@ const Tabs = (props) => {
       }
     }}
     >
-      <Tab.Screen name="Home" options={{
+      <Tab.Screen name="Нүүр" options={{
         tabBarIcon: ({focused}) => (
           <View style={{alignItems: 'center', justifyContent: 'center', top:3,}}>
             <Image 
@@ -50,7 +50,7 @@ const Tabs = (props) => {
           </View>
         ),
       }}>{() => <MainNavigation {...props}/>}</Tab.Screen>
-      <Tab.Screen name="Profile" component={Profile} options={{
+      <Tab.Screen name="Профайл" component={Profile} options={{
         tabBarIcon: ({focused}) => (
           <View style={{alignItems: 'center', justifyContent: 'center', top:3,}}>
             <Image 

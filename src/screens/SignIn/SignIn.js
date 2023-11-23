@@ -28,7 +28,7 @@ const SignIn = (props) => {
     return(
         // <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
             <View style={styles.container}>
-                <LinearGradient colors={['#9B4E4D', '#822321', '#9B4E4D', '#822321', '#9B4E4D']} locations={[0, 0.2, 0.5, 0.8, 1]} start={{x: 0, y: 0.2}} end={{x: 1, y: 0.8}} style={{flex: 1}}>
+                {/* <LinearGradient colors={['#9B4E4D', '#822321', '#9B4E4D', '#822321', '#9B4E4D']} locations={[0, 0.2, 0.5, 0.8, 1]} start={{x: 0, y: 0.2}} end={{x: 1, y: 0.8}} style={{flex: 1}}> */}
                 <View style={styles.logintop}>
                     <ImageBackground 
                         source={Logo}
@@ -39,7 +39,7 @@ const SignIn = (props) => {
 
                     </ImageBackground>
                 </View>
-                </LinearGradient>
+                {/* </LinearGradient> */}
                 <View style={styles.loginbottom}>
                     <MyInputField 
                         placeholder="Хэрэглэгчийн ID" 
@@ -75,20 +75,33 @@ const styles = StyleSheet.create({
     },
 
     logintop: {
-        flex: 1,
-        display: 'flex',
+        position: 'absolute',
+        top: 0,
+        width: '100%',
+        height: '40%',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 20,
+        backgroundColor: '#822321',
+        zIndex: 1,
+        borderBottomRightRadius: 30,
+        borderBottomLeftRadius: 30,
+        borderColor: 'black',
+        borderBottomWidth: 3,
+        borderLeftWidth: 1,
+        borderRightWidth: 1,
     },
 
-    loginbottom: {
-        flex: 2,
+    loginbottom: {  
+        position: 'absolute',
+        width: '100%',
+        height: '69%',
+        bottom: 0,
         borderRadius: 30,
         padding: 10,
         display: "flex",
         paddingTop: 30,
         alignItems: 'center',
+        zIndex: 10,
     },
 
     logo: {

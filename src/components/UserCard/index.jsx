@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: 'black',
         position: 'absolute',
-        top: 85,
+        top: "12%",
         flexDirection: 'row',
         shadowColor: 'black',
         shadowOpacity: 0.25,

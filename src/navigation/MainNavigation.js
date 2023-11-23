@@ -14,7 +14,7 @@ const Stack = createNativeStackNavigator();
 const MainNavigation = (props) => {
     const user = props;
   return (
-        <Stack.Navigator screenOptions={{ headerTransparent: true ,headerBackTitleVisible:false, headerStyle: {backgroundColor: '#822321'}, headerTitleStyle: {color: 'white'}, headerTintColor: 'white'}}>
+        <Stack.Navigator screenOptions={{ headerBackTitleVisible:false, headerTitleStyle: {color: 'white', fontSize: 20, }, headerTintColor: 'white', headerTransparent: true}}>
             <Stack.Screen name='Home' options={{headerShown: false}}>{() => <Home {...user}/>}</Stack.Screen>
             <Stack.Screen name='Classes' component={Classes} options={({ route }) => ({ headerTitle: "Хичээлүүд" })}/>
             <Stack.Screen name='Schedule' component={Schedule} options={{headerTitle: "Хичээлийн хуваарь"}}/>

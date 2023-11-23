@@ -22,11 +22,19 @@ const styles = StyleSheet.create({
     },
   
     profilecontainer: {
-      flex: 1,
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      left: 0,
+      height: '20%',
       backgroundColor: '#822321',
       borderBottomLeftRadius: 25,
       borderBottomRightRadius: 25,
       paddingHorizontal: 40,
+      borderColor: 'black',
+      borderBottomWidth: 3,
+      borderLeftWidth: 1,
+      borderRightWidth: 1,
     },
 })
 
