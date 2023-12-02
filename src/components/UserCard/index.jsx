@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 import PP from '../../../assets/images/PP.jpg'
 
-const UserCard = ({name, id, major, picture}) => {
+const UserCard = ({name, id, major, semester, picture}) => {
   return (
     <View style={styles.card}>
       <View style={styles.textContainer}>
@@ -10,6 +10,7 @@ const UserCard = ({name, id, major, picture}) => {
             <Text style={{fontSize: 25, fontWeight: "900",}}>{name ? name : 'Нэр'}</Text>
             <Text style={{fontWeight: '300', }}>{id ? id : 'ID'}</Text>
             <Text style={{fontSize: 15, marginTop: 10, fontWeight: "800", fontStyle: 'italic'}}>{major ? major : 'Мэргэжил'}</Text>
+            <Text style={{fontWeight: '300', }}>{semester}</Text>
         </View>
       </View>
       <View style={styles.imageContainer}>
@@ -27,9 +28,8 @@ const styles = StyleSheet.create({
         marginHorizontal: '5%',
         borderRadius: 30,
         borderWidth: 2,
-        borderColor: 'black',
         position: 'absolute',
-        top: "12%",
+        top: "10%",
         flexDirection: 'row',
         shadowColor: 'black',
         shadowOpacity: 0.25,

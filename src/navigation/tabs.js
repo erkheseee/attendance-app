@@ -3,6 +3,7 @@ import MainNavigation from "../navigation/MainNavigation";
 import Profile from '../screens/Profile';
 import { View, Text, Image } from "react-native";
 import React from "react";
+import AllGrades from "../screens/ClassScreens/AllGrades";
 
 const Tab = createBottomTabNavigator();
 
@@ -50,6 +51,23 @@ const Tabs = (props) => {
           </View>
         ),
       }}>{() => <MainNavigation {...props}/>}</Tab.Screen>
+      <Tab.Screen name="Дүн" component={AllGrades} options={{
+        tabBarIcon: ({focused}) => (
+          <View style={{alignItems: 'center', justifyContent: 'center', top:3,}}>
+            <Image 
+              source={require('../../assets/images/grade.png')}
+              resizeMode="contain"
+              style={{
+                width: 30,
+                height: 30,
+                marginBottom: 5,
+                tintColor: focused ? '#822321' : 'black',
+              }}
+            />
+            <Text style={{color: focused ? '#822321' : 'black', fontWeight: '900'}}>Дүн</Text>
+          </View>
+        ),
+      }}/>
       <Tab.Screen name="Профайл" component={Profile} options={{
         tabBarIcon: ({focused}) => (
           <View style={{alignItems: 'center', justifyContent: 'center', top:3,}}>
