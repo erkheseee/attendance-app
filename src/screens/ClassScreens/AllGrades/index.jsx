@@ -1,68 +1,64 @@
-import { View, ScrollView, StyleSheet, TouchableOpacity, Text } from 'react-native'
-import React from 'react'
-import classesData from '../../Classes/classesData';
-import { Table, Col, Row } from 'react-native-table-component';
-import { getGradeProgress } from '../../Classes/getScores';
+import { View, useWindowDimensions, StyleSheet, ImageBackground, Text, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react';
+import Header from '../../../components/Header/Header';
+import UserCard from '../../../components/UserCard';
+import Building from '../../../../assets/images/building.jpeg';
+import SemesterGrade from './SemesterGrade';
 
-const AllGrades = ({navigation}) => {
+const AllGrades = ({ navigation }) => {
 
-    const elementButton = (angi) => (
-        <TouchableOpacity style={{paddingHorizontal: 2}} onPress={() => navigation.navigate('Grades', {angi: angi, className: angi.name})}>
-          <View>
-            <Text style={{textAlign: 'left', fontWeight: 'bold'}}>{angi.name}</Text>
-          </View>
-        </TouchableOpacity>
-      );
-
-    let classes = classesData();
-
-    let tableHead = ['Багш', 'Хичээл', 'Дүнгийн явц', 'Үнэлгээ'];
-    let widthArr = [150, 200, 100, 60];
-
-    let tableData = [];
-
-    for(let i=0; i<classes.length; i++){
-        let rowData = [];
-        rowData.push(classes[i].teacher);
-        rowData.push(elementButton(classes[i]));
-        rowData.push(getGradeProgress(classes[i]).gradeProgress);
-        tableData.push(rowData);
+    const user = {
+        userID: 'se20d005',
+        userPassword: '0000',
+        userName: 'Т.Эрхэс',
+        userMajor: 'Програм Хангамж',
+        userImage: 'https://scontent.fuln2-2.fna.fbcdn.net/v/t1.6435-9/60122027_449738552466000_489798920839364608_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=be3454&_nc_ohc=6RNId0KKKAkAX8Dzfrv&_nc_ht=scontent.fuln2-2.fna&cb_e2o_trans=t&oh=00_AfCz6HV4Bg3-9lcRml1jxiZl1S2pUWkWjtHjbws5Z4J6Pw&oe=658554C4',
     }
 
     return (
-        <View style={styles.container}>
-            <ScrollView horizontal={true}>
-                <View>
-                    <Table borderStyle={{ borderWidth: 1, borderColor: '#C1C0B9' }}>
-                        <Row data={tableHead} widthArr={widthArr} style={styles.header} textStyle={{textAlign: 'center', color: '#fff'}} />
-                    </Table>
-                    <ScrollView style={styles.dataWrapper}>
-                        <Table borderStyle={{ borderWidth: 1, borderColor: '#C1C0B9' }}>
-                            {
-                                tableData.map((rowData, index) => (
-                                    <Row
-                                        key={index}
-                                        data={rowData}
-                                        widthArr={widthArr}
-                                        style={[styles.row, index % 2 && { backgroundColor: '#F7F6E7' }]}
-                                        textStyle={styles.text}
-                                    />
-                                ))
-                            }
-                        </Table>
-                    </ScrollView>
+        <View style={{ flex: 1 }}>
+            <ImageBackground source={Building} style={{ flex: 1 }}>
+                <View style={{ flex: 1, backgroundColor: 'rgba(193, 192, 185, 0.75)' }}>
+                    <Header title='Нийт Дүн' />
+                    <View style={{ flex: 5.5, }}></View>
+                    <UserCard name={user.userName} id={'2023-24 Намар'} major={'Дүнгийн голч: 3.05'} semester={'Бакалавр'} picture={user.userImage} />
+
+                    {/* Хичээлийн дүн харах хэсэг */}
+                    <>
+                        <SemesterGrade>
+                            {/* <TouchableOpacity>
+                                <View style={styles.button}>
+                                    <Text style={{ fontWeight: '800' }}>Дэлгэрэнгүй</Text>
+                                </View>
+                            </TouchableOpacity> */}
+                        </SemesterGrade>
+                    </>
                 </View>
-            </ScrollView>
+            </ImageBackground>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff', marginTop: 60 },
-    header: { height: 50, backgroundColor: '#822321' },
-    text: { textAlign: 'center', fontWeight: '300', color: 'black' },
-    dataWrapper: { marginTop: -1 },
-    row: { height: 40, backgroundColor: '#E7E6E1' }
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      },
+      button: {
+        marginTop: 15,
+        backgroundColor: '#D9BDBC',
+        borderWidth: 2,
+        borderRadius: 50,
+        padding: 16,
+        alignItems: 'center',
+      },
+      card: {
+        backgroundColor: "#fff",
+        height: 250,
+        justifyContent: "center",
+        alignItems: "center",
+      },
 });
 
 export default AllGrades

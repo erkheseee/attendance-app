@@ -17,7 +17,7 @@ const MainNavigation = (props) => {
         <Stack.Navigator screenOptions={{ headerBackTitleVisible:false, headerTitleStyle: {color: 'white', fontSize: 20, }, headerTintColor: 'white', headerTransparent: true}}>
             <Stack.Screen name='Home' options={{headerShown: false}}>{() => <Home {...user}/>}</Stack.Screen>
             <Stack.Screen name='Classes' component={Classes} options={({ route }) => ({ headerTitle: "Хичээлүүд" })}/>
-            <Stack.Screen name='Schedule' component={Schedule} options={{headerTitle: "Хичээлийн хуваарь"}}/>
+            <Stack.Screen name='Schedule' component={Schedule} options={{ headerTitle: "Хичээлийн хуваарь"}}/>
             <Stack.Screen name='AllGrades' component={AllGrades} options={{headerTitle: `Дүнгүүд`}}/>
             <Stack.Screen name='Grades' component={Grades} options={({ route }) => ({headerTitle: `${route.params.className} - Дүн`})}/>
             <Stack.Screen name='Assignments' component={Assignments} options={{headerTitle: " "}}/>

@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, ScrollView, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import { Table, TableWrapper, Row, Rows, Col } from 'react-native-table-component';
 
@@ -22,7 +22,7 @@ const SeminarTable = () => {
     const tableFoot = ['Нийт', '10', '12'];
 
     return (
-        <View style={styles.tableContainer}>
+        <ScrollView style={styles.tableContainer}>
         <Table>
             <Row data={tableHead} flexArr={[1, 1, 1]} style={styles.head} textStyle={styles.text} />
             <View style={{backgroundColor: 'white', height: 1, marginBottom: 10,}}></View>
@@ -33,7 +33,7 @@ const SeminarTable = () => {
             <View style={{backgroundColor: 'white', height: 1, marginTop: 10,}}></View>
             <Row data={tableFoot} flexArr={[1, 1, 1]} style={styles.head} textStyle={styles.text} />
         </Table>
-    </View>
+    </ScrollView>
 )
 }
 

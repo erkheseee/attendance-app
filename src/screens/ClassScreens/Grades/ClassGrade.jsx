@@ -6,12 +6,12 @@ const ClassGrade = ({ children }) => {
     const tableHead = ['', 'Авсан', 'Авах'];
     const tableTitle = ['Ирц', 'Семинар', 'Бие Даалт', 'Шалгалт'];
     const tableData = [
-        ['10%', '10%'],
-        ['30%', '30%'],
+        ['8%', '10%'],
+        ['20%', '30%'],
         ['30%', '30%'],
         ['30%', '30%'],
     ];
-    const tableFoot = [ 'Нийт', '100%', '100%']
+    const tableFoot = [ 'Нийт', '88% B+', '100% A']
 
     return (
         <View style={styles.tableContainer}>
@@ -32,7 +32,12 @@ const ClassGrade = ({ children }) => {
 
 const styles = StyleSheet.create({
     tableContainer: {
-        flex: 1,
+        flex: 6,
+        shadowColor: 'black',
+        shadowOpacity: 0.25,
+        shadowOffset: {width: 10, height: 10},
+        shadowRadius: 3.5,
+        elevation: 5,
         padding: 16,
         paddingTop: 30,
         backgroundColor: '#822321',

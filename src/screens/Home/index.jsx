@@ -9,6 +9,10 @@ import Alerts from '../../components/Alerts'
 
 const Home = (props) => {
   const {user} = props.route.params;
+
+  props.route.params.alert && console.warn("Амжилттай нэвтэрлээ");
+  props.route.params.alert = false;
+
   const navigation = useNavigation();
   
   const navigateToClasses = () => {

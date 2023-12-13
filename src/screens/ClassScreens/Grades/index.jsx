@@ -1,6 +1,5 @@
 import { View, useWindowDimensions , StyleSheet, ImageBackground, Text, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react';
-import { getGradeProgress } from '../../Classes/getScores'
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import CustomTable from './CustomTable';
 import Header from '../../../components/Header/Header';
@@ -25,6 +24,8 @@ const Grades = ({route, navigation}) => {
   }
 
   const {angi} = route.params;
+  let gradeProgress = 0;
+  Object.values(angi.gradeProgress).forEach((grade) => gradeProgress+=grade)
 
   const FirstRoute = () => (
     <View style={{flex: 1, backgroundColor: '#D9BDBC'}}><AttendanceTable/></View>
@@ -72,10 +73,10 @@ const Grades = ({route, navigation}) => {
             <Header />
             {/* Space for UserCard */}
             <View style={{flex: 5.5,}}></View>
-            <UserCard name={user.userName} id={'2023-24 Намар'} major={'Хичээлийн дүн: '} semester={'Бакалавр'} picture={user.userImage}/>
+            <UserCard name={user.userName} id={'2023-24 Намар'} major={`Хичээлийн дүн: ${gradeProgress}% A`} semester={'Бакалавр'} picture={user.userImage}/>
             
             {/* Хичээлийн дүн харах хэсэг */}
-            <View style={styles.gradeWidget}>
+            <>
               <ClassGrade>
               <TouchableOpacity onPress={toggle}>
                 <View style={styles.button}>
@@ -83,7 +84,7 @@ const Grades = ({route, navigation}) => {
                 </View>
               </TouchableOpacity>
               </ClassGrade>  
-            </View>
+            </>
 
             <BottomSheet
             visible={visible}
@@ -142,14 +143,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  gradeWidget: {
-    flex: 10,
-    shadowColor: 'black',
-    shadowOpacity: 0.25,
-    shadowOffset: {width: 10, height: 10},
-    shadowRadius: 3.5,
-    elevation: 5,
-  }
 });
 
 export default Grades

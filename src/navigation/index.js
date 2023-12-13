@@ -22,9 +22,9 @@ const Navigation = () => {
 
   return (
       <NavigationContainer >
-        <Stack.Navigator screenOptions={{ headerTransparent: true ,headerBackTitleVisible:false, headerStyle: {backgroundColor: '#822321'}, headerTitleStyle: {color: 'white'}, headerTintColor: 'white'}} initialRouteName='SignIn'>
+        <Stack.Navigator screenOptions={{ headerBackTitleVisible:false, headerStyle: {backgroundColor: '#822321'}, headerTitleStyle: {color: 'white'}, headerTintColor: 'white'}} initialRouteName='SignIn'>
             <Stack.Screen name='SignIn' options={{ headerShown: false}}>{() => <SignIn {...data} />}</Stack.Screen>
-            <Stack.Screen name='ForgotPassword' component={ForgotPassword} options={{headerTitle: null}}/>
+            <Stack.Screen name='ForgotPassword' component={ForgotPassword} options={{headerTitle: "Нууц үг сэргээх"}}/>
             <Stack.Screen name='ConfirmCode' component={ConfirmCode} />
             <Stack.Screen name='ResetPassword' component={ResetPassword} />
             <Stack.Screen name='Tabs' options={{ headerShown: false}} component={Tabs} />
