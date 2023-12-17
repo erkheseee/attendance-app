@@ -35,7 +35,7 @@ const SignIn = (props) => {
           (txObj, error) => console.log(error)
         );
       });
-  });
+  }, []);
 
   const handleClickSignIn = () => {
     if (userID == user.USERID && password == user.PASSWORD) {

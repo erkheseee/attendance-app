@@ -8,6 +8,7 @@ import {
   Dimensions,
   TouchableOpacity,
   ImageBackground,
+  ScrollView,
 } from 'react-native';
 import moment from 'moment';
 import Swiper from 'react-native-swiper';
@@ -16,6 +17,113 @@ import UserCard from '../../components/UserCard';
 import Header from '../../components/Header/Header';
 
 const { width } = Dimensions.get('window');
+
+const array = [
+  {},
+  {
+      weekday: 'Monday',
+      classes: [
+          {
+              teacher: 'Э. Идэрбаатар',
+              class: 'Бакалаврын ахисан шатны төсөл II',
+              type: 'Лекц',
+              par: 3,
+              time: '11:40 - 13:10',
+          }
+      ]
+  },
+  {
+      weekday: 'Tuesday',
+      classes: [
+          {
+              teacher: 'Тэргүүнцэцэг',
+              class: 'Япон хэл',
+              type: 'Лекц',
+              par: 1,
+              time: '08:20 - 09:50',
+          },
+          {
+              teacher: 'Б. Золжаргал',
+              class: 'Програм хангамжын төслийн менежмент',
+              type: 'Лекц',
+              par: 2,
+              time: '10:00 - 11:30',
+          },
+          {
+              teacher: 'Б. Золжаргал',
+              class: 'Програм хангамжын төслийн менежмент',
+              type: 'Семинар',
+              par: 3,
+              time: '11:40 - 13:10',
+          }
+      ]
+  },
+  {
+      weekday: 'Wednesday',
+      classes: [
+          {
+              teacher: 'Э.Идэрбаатар',
+              class: 'Өргөн хүрээний систем хөгжүүлэлт',
+              type: 'Лекц',
+              par: 2,
+              time: '10:00 - 11:30',
+          },
+          {
+              teacher: 'Ц. Солонго',
+              class: 'Мобайл Програмчлал',
+              type: 'Лекц',
+              par: 5,
+              time: '15:30 - 17:00',
+          },
+          {
+              teacher: 'Ц. Солонго',
+              class: 'Мобайл Програмчлал',
+              type: 'Семинар',
+              par: 6,
+              time: '17:10 - 18:40',
+          }
+      ]
+  },
+  {
+      weekday: 'Thursday',
+      classes: [
+          {
+              teacher: 'Э. Идэрбаатар',
+              class: 'Бакалаврын ахисан шатны төсөл II',
+              type: 'Лекц',
+              par: 1,
+              time: '08:20 - 09:50',
+          }
+      ]
+  },
+  {
+      weekday: 'Friday',
+      classes: [
+          {
+              teacher: 'Э.Идэрбаатар',
+              class: 'Өргөн хүрээний систем хөгжүүлэлт',
+              type: 'Семинар',
+              par: 1,
+              time: '08:20 - 09:50',
+          },
+          {
+              teacher: 'Б.Гантөр',
+              class: 'Өгөгдлийн олборлолт',
+              type: 'Лекц',
+              par: 2,
+              time: '10:00 - 11:30',
+          },
+          {
+              teacher: 'Б.Гантөр',
+              class: 'Өгөгдлийн олборлолт',
+              type: 'Семинар',
+              par: 3,
+              time: '11:40 - 13:10',
+          }
+      ]
+  },
+  {}
+]
 
 export default function Schedule() {
   const swiper = useRef();
@@ -36,6 +144,21 @@ export default function Schedule() {
       });
     });
   }, [week]);
+
+  const scheduleList = (weekday) => {
+    if(weekday != 6 && weekday != 0){
+      const classes = array[weekday].classes;
+      let rows = [[],[],[],[],[],[],[]];
+      classes.map((item, index) => {
+        Object.values(item).forEach(value => rows[index].push(<Text style={{fontSize: 18, fontWeight: '800'}}>{value}</Text>)
+      )})
+      return(
+        <View style={{backgroundColor: '#822321', flex: 1}}>
+          {classes.map((item,index) => <View style={{borderWidth: 2, height: 200, backgroundColor: '#D9BDBC', margin: 10, borderRadius: 30, alignItems: 'center', justifyContent: 'center'}}>{rows[index]}</View>)}
+        </View>
+    )
+    }
+  }
 
   return (
     <View style={{ flex: 1 }}>
@@ -104,12 +227,10 @@ export default function Schedule() {
           </View>
 
           <View style={{ flex: 1, paddingHorizontal: 16, paddingVertical: 24 }}>
-            <Text style={styles.subtitle}>{value.toDateString()}</Text>
-            <View style={styles.placeholder}>
-              <View style={styles.placeholderInset}>
-                {/* Replace with your content */}
-              </View>
-            </View>
+            {/* <Text style={styles.subtitle}>{value.toDateString()}</Text> */}
+            <ScrollView style={styles.tableContainer}>
+              {scheduleList(value.getDay())}
+            </ScrollView>
           </View>
 
           {/* <View style={styles.footer}>
@@ -221,4 +342,15 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#111',
   },
+  tableContainer: {
+    flex: 15,
+    shadowColor: 'black',
+    shadowOpacity: 0.25,
+    shadowOffset: {width: 10, height: 10},
+    shadowRadius: 3.5,
+    elevation: 5,
+    backgroundColor: '#822321',
+    borderRadius: 30,
+    borderWidth: 2,
+},
 });
