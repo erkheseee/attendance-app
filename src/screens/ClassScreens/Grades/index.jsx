@@ -12,9 +12,11 @@ import AttendanceTable from './AttendanceTable';
 import SeminarTable from './SeminarTable';
 import AssignmentTable from './AssignmentTable';
 import ExamTable from './ExamTable';
+import classesData from '../../Classes/classesData';
 
 const Grades = ({route, navigation}) => {
  
+  const classes = classesData();
   const user = {
     userID: 'se20d005',
     userPassword: '0000',
@@ -24,6 +26,7 @@ const Grades = ({route, navigation}) => {
   }
 
   const {angi} = route.params;
+
   let gradeProgress = 0;
   Object.values(angi.gradeProgress).forEach((grade) => gradeProgress+=grade)
 

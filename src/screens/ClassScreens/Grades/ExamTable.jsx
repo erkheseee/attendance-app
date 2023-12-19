@@ -43,7 +43,7 @@ text: {
     alignSelf: 'center',
     shadowColor: 'black',
     shadowOpacity: 1,
-    shadowRadius: 0,
+    shadowRadius: 2,
     shadowOffset: {height: 2, width: 2},
 },
 })
