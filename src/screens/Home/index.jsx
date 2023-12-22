@@ -90,7 +90,8 @@ const styles = StyleSheet.create({
   alerts: {
     flex: 5,
     marginBottom: 10,
-    borderRadius: 15,
+    borderBottomRightRadius: 15,
+    borderBottomLeftRadius: 15,
     backgroundColor: '#822321',
   },
 })

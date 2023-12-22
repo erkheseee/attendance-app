@@ -1,37 +1,60 @@
-import { View, ScrollView, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import { View, ScrollView, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import React, {useState} from 'react'
 import { Table, TableWrapper, Row, Rows, Col } from 'react-native-table-component';
+import AttendanceData from './AttendanceData';
 
 const AttendanceTable = () => {
-    const tableHead = ['Лекц', 'Ирц', 'Огноо'];
-    const tableTitle = ['Лекц 1', 'Лекц 2', 'Лекц 3', 'Лекц 4', 'Лекц 5', 'Лекц 6', 'Лекц 7', 'Лекц 8', 'Лекц 9', 'Лекц 10', 'Лекц 11', 'Лекц 12', 'Лекц 13', 'Лекц 14'];
+
+    const [rata, setRata] = useState({});
+
+    const tableHead = ['Долоо хоног', 'Оноо', 'Огноо'];
     const tableData = [
-        ['+', '2023-09-06'],
-        ['+', '2023-09-13'],
-        ['+', '2023-09-20'],
-        ['+', '2023-09-27'],
-        ['-', '2023-10-04'],
-        ['-', '2023-10-11'],
-        ['+', '2023-10-18'],
-        ['-', '2023-10-25'],
-        ['+', '2023-11-01'],
-        ['+', '2023-11-08'],
-        ['-', '2023-11-15'],
-        ['-', '2023-11-22'],
-        ['+', '2023-11-29'],
-        ['-', '2023-12-06'],
+        ['1-р', '2/2', '2023-09-06'],
+        ['2-р', '1/2', '2023-09-13'],
+        ['3-р', '2/2', '2023-09-20'],
+        ['4-р', '2/2', '2023-09-27'],
+        ['5-р', '0/2', '2023-10-04'],
+        ['6-р', '0/2', '2023-10-11'],
+        ['7-р', '1/2', '2023-10-18'],
+        ['8-р', '0/2', '2023-10-25'],
+        ['9-р', '2/2', '2023-11-01'],
+        ['10-р', '2/2', '2023-11-08'],
+        ['11-р', '1/2', '2023-11-15'],
+        ['12-р', '2/2', '2023-11-22'],
+        ['13-р', '2/2', '2023-11-29'],
+        ['14-р', '1/2', '2023-12-06'],
     ];
-    const tableFoot = ['Нийт', '8', '14']
+    const tableFoot = ['Нийт', '19/28', '']
+    const tableObject = AttendanceData();
+
+    const handlePress = (index) => {
+        setRata(current => ({...current, id: index}));
+    }
+
+    const handleDropDown = (index) => {
+        const lec = [`Лекц`, `${tableObject[index]['lec']}`, ``];
+        const lab = [`Лаб`, `${tableObject[index]['lab']}`, ``];
+        return (
+            <>
+                <Row data={lec}  flexArr={[20, 1, 20]} style={styles.row} textStyle={styles.text} />
+                <Row data={lab}  flexArr={[20, 1, 20]} style={styles.row} textStyle={styles.text} />
+            </>
+        )
+    }
 
     return (
         <ScrollView style={styles.tableContainer}>
             <Table>
                 <Row data={tableHead} flexArr={[1, 1, 1]} style={styles.head} textStyle={styles.text} />
                 <View style={{backgroundColor: 'white', height: 1, marginBottom: 10,}}></View>
-                <TableWrapper style={styles.wrapper}>
-                    <Col data={tableTitle} style={styles.title} flexArr={[1]} textStyle={styles.text} />
-                    <Rows data={tableData} flexArr={[1, 1]} style={styles.row} textStyle={styles.text} />
-                </TableWrapper>
+                        {
+                            tableData.map((data, index) => (
+                                <TouchableOpacity onPress={() => handlePress(index)}>
+                                    <Row data={data} flexArr={[1, 1, 1]} style={styles.row} textStyle={styles.text} />
+                                    {rata['id'] == index && handleDropDown(index)}
+                                </TouchableOpacity>
+                            ))
+                        }
                 <View style={{backgroundColor: 'white', height: 1, marginTop: 10,}}></View>
                 <Row data={tableFoot} flexArr={[1, 1, 1]} style={styles.head} textStyle={styles.text} />
             </Table>

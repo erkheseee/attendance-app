@@ -9,7 +9,7 @@ const ProfileGrade = ({ children }) => {
 
     return (
         <View style={styles.tableContainer}>
-            <Table>
+            <Table style={{marginBottom: 4}}>
                 <Row data={tableHead} flexArr={[1]} style={styles.head} textStyle={[styles.text, {textAlign: 'center',}]} />
                 <View style={{backgroundColor: 'white', height: 1, marginBottom: 10,}}></View>
                 <TableWrapper style={styles.wrapper}>
@@ -24,21 +24,20 @@ const ProfileGrade = ({ children }) => {
 
 const styles = StyleSheet.create({
     tableContainer: {
-        flex: 6.43,
+        flex: 7,
         shadowColor: 'black',
         shadowOpacity: 0.25,
         shadowOffset: {width: 10, height: 10},
         shadowRadius: 3.5,
         elevation: 5,
-        padding: 16,
-        paddingTop: 10,
+        padding: 15,
         backgroundColor: '#822321',
         borderRadius: 30,
         marginHorizontal: '5%',
         marginBottom: 140,
         borderWidth: 2,
     },
-    head: { height: 24},
+    head: { height: 24, marginBottom: 5,},
     wrapper: { flexDirection: 'row'},
     title: { flex: 1, alignItems: 'flex-end' },
     row: { height: 24, },

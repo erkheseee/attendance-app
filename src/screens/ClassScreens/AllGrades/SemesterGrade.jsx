@@ -17,8 +17,8 @@ const SemesterGrade = ({ children }) => {
 
     return (
         <View style={styles.tableContainer}>
-            <Table>
-                <Row data={tableHead} flexArr={[2, 1, 1]} style={styles.head} textStyle={styles.text} />
+            <Table style={{}}>
+                <Row data={tableHead} flexArr={[2, 1, 1]} style={styles.head} textStyle={styles.text}/>
                 <View style={{backgroundColor: 'white', height: 1, marginBottom: 10,}}></View>
                 <TableWrapper style={styles.wrapper}>
                     <Col data={['2020-21', '2021-22', '2022-23']} heightArr={[56,56,56]} textStyle={styles.text} />
@@ -35,14 +35,15 @@ const SemesterGrade = ({ children }) => {
 
 const styles = StyleSheet.create({
     tableContainer: {
-        flex: 6,
+        flex: 7,
         shadowColor: 'black',
         shadowOpacity: 0.25,
         shadowOffset: {width: 10, height: 10},
         shadowRadius: 3.5,
         elevation: 5,
-        padding: 16,
-        paddingTop: 30,
+        padding: 15,
+        paddingTop: 5,
+        // marginBottom: 30,
         backgroundColor: '#822321',
         borderRadius: 30,
         marginHorizontal: '5%',

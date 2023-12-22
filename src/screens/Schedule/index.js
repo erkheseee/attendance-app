@@ -30,6 +30,7 @@ const array = [
         type: "Лекц",
         par: 3,
         time: "11:40 - 13:10",
+        angi: "913",
       },
     ],
   },
@@ -42,6 +43,7 @@ const array = [
         type: "Лекц",
         par: 1,
         time: "08:20 - 09:50",
+        angi: "713",
       },
       {
         teacher: "Б. Золжаргал",
@@ -49,6 +51,7 @@ const array = [
         type: "Лекц",
         par: 2,
         time: "10:00 - 11:30",
+        angi: "914",
       },
       {
         teacher: "Б. Золжаргал",
@@ -56,6 +59,7 @@ const array = [
         type: "Семинар",
         par: 3,
         time: "11:40 - 13:10",
+        angi: "914",
       },
     ],
   },
@@ -68,6 +72,7 @@ const array = [
         type: "Лекц",
         par: 2,
         time: "10:00 - 11:30",
+        angi: "914",
       },
       {
         teacher: "Ц. Солонго",
@@ -75,6 +80,7 @@ const array = [
         type: "Лекц",
         par: 5,
         time: "15:30 - 17:00",
+        angi: "913",
       },
       {
         teacher: "Ц. Солонго",
@@ -82,6 +88,7 @@ const array = [
         type: "Семинар",
         par: 6,
         time: "17:10 - 18:40",
+        angi: "913",
       },
     ],
   },
@@ -94,6 +101,7 @@ const array = [
         type: "Лекц",
         par: 1,
         time: "08:20 - 09:50",
+        angi: "912",
       },
     ],
   },
@@ -106,6 +114,7 @@ const array = [
         type: "Семинар",
         par: 1,
         time: "08:20 - 09:50",
+        angi: "913",
       },
       {
         teacher: "Б.Гантөр",
@@ -113,6 +122,7 @@ const array = [
         type: "Лекц",
         par: 2,
         time: "10:00 - 11:30",
+        angi: "912",
       },
       {
         teacher: "Б.Гантөр",
@@ -120,6 +130,7 @@ const array = [
         type: "Семинар",
         par: 3,
         time: "11:40 - 13:10",
+        angi: "912",
       },
     ],
   },
@@ -209,7 +220,10 @@ export default function Schedule({navigation}) {
           >
             <Text style={[styles.text, {fontSize: 20, fontWeight: '900', }]}>{item.class}</Text>
             <Text style={[styles.text, {fontSize: 15, fontStyle: 'italic', marginBottom: 50,}]}>{item.teacher}</Text>
-            <Text style={[styles.text, {fontWeight: 'bold',}]}>{item.type}</Text>
+            <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between'}}>
+              <Text style={[styles.text, {fontWeight: 'bold',}]}>{item.type}</Text>
+              <Text style={[styles.text, {fontWeight: 'bold',}]}>{item.angi}</Text>
+            </View>
           </TouchableOpacity>
       )
         rows.push(object);
@@ -239,6 +253,8 @@ export default function Schedule({navigation}) {
 
   return (
     <View style={{ flex: 1 }}>
+      <Text style={[styles.gtlt, {left: 6}]}>&lt;</Text>
+      <Text style={[styles.gtlt, {right: 6}]}>&gt;</Text>
       <ImageBackground source={Building} style={{ flex: 1 }}>
         <View style={styles.container}>
           <Header />
@@ -263,7 +279,7 @@ export default function Schedule({navigation}) {
             >
               {weeks.map((dates, index) => (
                 <View
-                  style={[styles.itemRow, { paddingHorizontal: 16 }]}
+                  style={[styles.itemRow, { paddingHorizontal: 20 }]}
                   key={index}
                 >
                   {dates.map((item, dateIndex) => {
@@ -397,7 +413,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-start",
     justifyContent: "space-between",
-    marginHorizontal: -4,
   },
   item: {
     flex: 1,
@@ -437,4 +452,16 @@ const styles = StyleSheet.create({
     shadowRadius: 0,
     shadowOffset: {height: 2, width: 2}, 
   },
+  gtlt: {
+    position: 'absolute',
+    zIndex: 2,
+    fontSize: 20,
+    fontWeight: '900',
+    color: '#fff',
+    top: 83,
+    shadowColor: 'black',
+    shadowOpacity: 1,
+    shadowRadius: 0,
+    shadowOffset: {height: 2, width: 2},
+  }
 });

@@ -4,7 +4,7 @@ import { Table, TableWrapper, Row, Rows, Col } from 'react-native-table-componen
 
 const SeminarTable = () => {
     const tableHead = ['Лаборатори', 'Гүйцэтгэл', 'Огноо'];
-    const tableTitle = ['Лаб 1', 'Лаб 2', 'Лаб 3', 'Лаб 4', 'Лаб 5', 'Лаб 6', 'Лаб 7', 'Лаб 8', 'Лаб 9', 'Лаб 10', 'Лаб 11', 'Лаб 12'];
+    const tableTitle = ['Сем 1', 'Сем 2', 'Сем 3', 'Сем 4', 'Сем 5', 'Сем 6', 'Сем 7', 'Сем 8', 'Сем 9', 'Сем 10', 'Сем 11', 'Сем 12'];
     const tableData = [
         ['+', '2023-09-20'],
         ['+', '2023-09-27'],
@@ -19,7 +19,7 @@ const SeminarTable = () => {
         ['+', '2023-11-29'],
         ['+', '2023-12-06'],
     ];
-    const tableFoot = ['Нийт', '10', '12'];
+    const tableFoot = ['Нийт', '10/12', ''];
 
     return (
         <ScrollView style={styles.tableContainer}>

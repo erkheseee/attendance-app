@@ -8,7 +8,7 @@ const AssignmentTable = () => {
     const tableData = [
         ['+', '2023-12-06'],
     ];
-    const tableFoot = ['Нийт', '30', '30']
+    const tableFoot = ['Нийт', '30/30', '']
 
     return (
     <ScrollView style={styles.tableContainer}>

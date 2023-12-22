@@ -6,19 +6,25 @@ const DATA = [
         id: 1,
         className: 'Мобайл Програмчлал',
         dueDate: 'Өнөөдөр',
-        alert: 'LAB-8',
+        alert: 'LAB-10',
     },
     {
         id: 2,
         className: 'Мобайл Програмчлал',
-        dueDate: 'Маргааш',
-        alert: 'LAB-9',
+        dueDate: 'Өнөөдөр',
+        alert: 'LAB-11',
     },
     {
         id: 3,
         className: 'Мобайл Програмчлал',
         dueDate: 'Дараа долоо хоног',
-        alert: 'LAB-10',
+        alert: 'Бие Даалт',
+    },
+    {
+        id: 4,
+        className: 'Япон хэл',
+        dueDate: 'Дараа долоо хоног',
+        alert: 'Улирлын Шалгалт',
     },
 ];
 
@@ -51,7 +57,7 @@ const styles = StyleSheet.create({
     item: {
         backgroundColor: '#D9BDBC',
         height: 80,
-        borderRadius: 30,
+        borderRadius: 15,
         width: 154,
         padding: 10,
         margin: 5,

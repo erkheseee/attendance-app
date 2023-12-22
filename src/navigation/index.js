@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 
 import SignIn from '../screens/SignIn';
 import ConfirmCode from '../screens/ConfirmCode';
@@ -9,9 +8,40 @@ import ForgotPassword from '../screens/ForgotPassword';
 import ResetPassword from '../screens/ResetPassword';
 import Tabs from '../navigation/tabs';
 
+import * as SQLite from "expo-sqlite";
+
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
+
+  const db = SQLite.openDatabase("MainDB");
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    db.transaction((tx) => {
+      tx.executeSql(
+        "CREATE TABLE IF NOT EXISTS USER (USERID TEXT PRIMARY KEY NOT NULL, PASSWORD TEXT NOT NULL)",
+        [],
+        () => {},
+        (error) => console.log(error)
+      );
+    });
+    db.transaction((tx) => {
+      tx.executeSql("INSERT INTO USER (USERID, PASSWORD) VALUES (?, ?)", [
+        "se20d005",
+        "0000",
+      ]);
+    });
+    db.transaction((tx) => {
+        tx.executeSql(
+          "SELECT USERID, PASSWORD FROM USER",
+          null,
+          (txObj, resultSet) => setUser(resultSet.rows._array[0]),
+          (txObj, error) => console.log(error)
+        );
+      });
+  }, []);
+
   const data = {
     userID: 'se20d005',
     userPassword: '0000',
@@ -23,7 +53,7 @@ const Navigation = () => {
   return (
       <NavigationContainer >
         <Stack.Navigator screenOptions={{ headerBackTitleVisible:false, headerStyle: {backgroundColor: '#822321'}, headerTitleStyle: {color: 'white'}, headerTintColor: 'white'}} initialRouteName='SignIn'>
-            <Stack.Screen name='SignIn' options={{ headerShown: false}}>{() => <SignIn {...data} />}</Stack.Screen>
+            <Stack.Screen name='SignIn' options={{ headerShown: false}}>{() => <SignIn object={data} sql={user} />}</Stack.Screen>
             <Stack.Screen name='ForgotPassword' component={ForgotPassword} options={{headerTitle: "Нууц үг сэргээх"}}/>
             <Stack.Screen name='ConfirmCode' component={ConfirmCode} />
             <Stack.Screen name='ResetPassword' component={ResetPassword} />

@@ -1,45 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Image, ImageBackground } from "react-native";
 import Logo from "../../../assets/images/logo.png";
 import MyInputField from "../../components/Input/Input";
 import MyButton from "../../components/Button/Button";
 import { useNavigation } from "@react-navigation/native";
-import * as SQLite from "expo-sqlite";
 
-const SignIn = (props) => {
-  const db = SQLite.openDatabase("MainDB");
-  let user;
+const SignIn = ({object, sql}) => {
+ 
   const [userID, setUserID] = useState("se20d005");
   const [password, setPassword] = useState("0000");
+  const [user, setUser] = useState({});
 
   useEffect(() => {
-    db.transaction((tx) => {
-      tx.executeSql(
-        "CREATE TABLE IF NOT EXISTS USER (USERID TEXT PRIMARY KEY NOT NULL, PASSWORD TEXT NOT NULL)",
-        [],
-        () => {},
-        (error) => console.log(error)
-      );
-    });
-    db.transaction((tx) => {
-      tx.executeSql("INSERT INTO USER (USERID, PASSWORD) VALUES (?, ?)", [
-        "se20d005",
-        "0000",
-      ]);
-    });
-    db.transaction((tx) => {
-        tx.executeSql(
-          "SELECT USERID, PASSWORD FROM USER",
-          null,
-          (txObj, resultSet) => user = resultSet.rows._array[0],
-          (txObj, error) => console.log(error)
-        );
-      });
-  }, []);
+    setUser(sql);
+  },[sql]);
 
   const handleClickSignIn = () => {
     if (userID == user.USERID && password == user.PASSWORD) {
-      navigation.navigate("Tabs", { user: props, alert: true });
+      navigation.navigate("Tabs", { user: object, alert: true });
     } else if(userID != user.USERID || password != user.PASSWORD){
       console.warn("ID эсвэл нууц үг буруу байна!");
     }

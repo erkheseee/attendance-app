@@ -3,8 +3,10 @@ import { StyleSheet, View } from 'react-native';
 import Navigation from "./src/navigation";
 import { LogBox } from "react-native";
 
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();
+
 export default function App() {
-  LogBox.ignoreLogs(["Warning: Failed prop type: Invalid prop `textStyle` of type `array` supplied to `Rows`, expected `object`."]);
 
   return (
     <View style={styles.container}>

@@ -4,7 +4,7 @@ import { Table, TableWrapper, Row, Rows, Col } from 'react-native-table-componen
 
 const ClassGrade = ({ children }) => {
     const tableHead = ['', 'Авсан', 'Авах'];
-    const tableTitle = ['Ирц', 'Семинар', 'Бие Даалт', 'Шалгалт'];
+    const tableTitle = ['       Ирц', '       Семинар', '       Бие Даалт', '      Шалгалт'];
     const tableData = [
         ['8%', '10%'],
         ['20%', '30%'],
@@ -38,8 +38,7 @@ const styles = StyleSheet.create({
         shadowOffset: {width: 10, height: 10},
         shadowRadius: 3.5,
         elevation: 5,
-        padding: 16,
-        paddingTop: 30,
+        padding: 15,
         backgroundColor: '#822321',
         borderRadius: 30,
         marginHorizontal: '5%',
